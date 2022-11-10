@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ClientesModule } from './clientes/clientes.module';
 import { Cliente } from './clientes/entities/cliente.entity';
+import { Produto } from './produtos/entities/produto.entity';
+import { ProdutosModule } from './produtos/produtos.module';
 @Module({
   imports: [ClientesModule, TypeOrmModule.forRoot({
     type: 'mysql',
@@ -10,9 +12,9 @@ import { Cliente } from './clientes/entities/cliente.entity';
     username: 'root',
     password: 'root',
     database: 'sonoscompiuter',
-    entities: [Cliente],
+    entities: [Cliente,Produto],
     synchronize: true,
-  }),],
+  }), ProdutosModule,],
   controllers: [],
   providers: [],
 })
